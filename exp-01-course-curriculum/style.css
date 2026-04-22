@@ -1,0 +1,6 @@
+/* Additional styles for Experiment 1 */
+body { max-width: 860px; margin: 0 auto; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.5rem; margin-top: 24px; }
+h3 { font-size: 1.2rem; margin-top: 16px; }
+p  { margin-bottom: 12px; }
