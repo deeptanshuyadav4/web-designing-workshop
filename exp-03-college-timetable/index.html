@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Experiment 3 – College Timetable</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 30px; background: #f0f4f8; color: #222; }
+    h1 { text-align: center; color: #2c3e50; }
+    h2 { color: #2980b9; margin-top: 30px; }
+    table { border-collapse: collapse; width: 100%; margin-top: 12px; background: #fff; }
+    th, td { border: 2px solid #2980b9; padding: 10px 14px; text-align: center; }
+    th { background: #2980b9; color: #fff; }
+    tr:nth-child(even) td { background: #eaf4fb; }
+    caption { font-size: 1.1rem; font-weight: bold; margin-bottom: 8px; color: #c0392b; }
+    .break { background: #f9e79f !important; font-style: italic; }
+    .nested-table { border-collapse: collapse; width: 100%; }
+    .nested-table td { border: 1px solid #aaa; padding: 4px 8px; font-size: 0.85rem; }
+  </style>
+</head>
+<body>
+
+  <h1>Government Engineering College</h1>
+  <h2>Weekly Class Timetable – B.Tech 2nd Year</h2>
+
+  <!-- Main timetable with rowspan and colspan -->
+  <table>
+    <caption>Semester IV – Section A (2025–26)</caption>
+    <thead>
+      <tr>
+        <th>Time / Day</th>
+        <th>Monday</th>
+        <th>Tuesday</th>
+        <th>Wednesday</th>
+        <th>Thursday</th>
+        <th>Friday</th>
+        <th>Saturday</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>9:00 – 10:00</th>
+        <td>Mathematics</td>
+        <td>Physics</td>
+        <td>Chemistry</td>
+        <td>Mathematics</td>
+        <td>Physics</td>
+        <td>Library</td>
+      </tr>
+      <tr>
+        <th>10:00 – 11:00</th>
+        <td>Web Design</td>
+        <td>Web Design</td>
+        <td>Mathematics</td>
+        <td>Chemistry</td>
+        <td>Web Design</td>
+        <td>Sports</td>
+      </tr>
+      <tr>
+        <th>11:00 – 11:15</th>
+        <!-- colspan across all 6 day columns -->
+        <td colspan="6" class="break">☕ Short Break</td>
+      </tr>
+      <tr>
+        <th>11:15 – 12:15</th>
+        <td>Physics Lab</td>
+        <td>Chemistry Lab</td>
+        <td>Web Design Lab</td>
+        <td>Physics Lab</td>
+        <td>Chemistry Lab</td>
+        <!-- rowspan: Saturday lab spans two slots -->
+        <td rowspan="2">Open Lab / Project Work</td>
+      </tr>
+      <tr>
+        <th>12:15 – 1:15</th>
+        <td>Physics Lab</td>
+        <td>Chemistry Lab</td>
+        <td>Web Design Lab</td>
+        <td>Physics Lab</td>
+        <td>Chemistry Lab</td>
+      </tr>
+      <tr>
+        <th>1:15 – 2:00</th>
+        <td colspan="6" class="break">🍽️ Lunch Break</td>
+      </tr>
+      <tr>
+        <th>2:00 – 3:00</th>
+        <td>English</td>
+        <td>Mathematics</td>
+        <td>English</td>
+        <td>Web Design</td>
+        <td>Mathematics</td>
+        <td colspan="1">—</td>
+      </tr>
+      <tr>
+        <th>3:00 – 4:00</th>
+        <td>Seminar</td>
+        <td>Tutorial</td>
+        <td>Seminar</td>
+        <td>Tutorial</td>
+        <td>Guest Lecture</td>
+        <td>—</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Faculty details with nested table -->
+  <h2>Faculty Details</h2>
+  <table>
+    <caption>Subject–Faculty Mapping</caption>
+    <thead>
+      <tr>
+        <th>Subject</th>
+        <th>Faculty</th>
+        <th>Contact (Nested)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Mathematics</td>
+        <td>Dr. A. Sharma</td>
+        <td>
+          <!-- Nested table -->
+          <table class="nested-table">
+            <tr><td>Email</td><td>sharma@college.edu</td></tr>
+            <tr><td>Room</td><td>B-204</td></tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td>Web Design</td>
+        <td>Prof. R. Verma</td>
+        <td>
+          <table class="nested-table">
+            <tr><td>Email</td><td>verma@college.edu</td></tr>
+            <tr><td>Room</td><td>Lab-3</td></tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td>Physics</td>
+        <td>Dr. K. Mehta</td>
+        <td>
+          <table class="nested-table">
+            <tr><td>Email</td><td>mehta@college.edu</td></tr>
+            <tr><td>Room</td><td>C-101</td></tr>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</body>
+</html>
