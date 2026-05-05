@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Experiment 4 – Hotel Booking Form</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { font-family: Arial, sans-serif; background: #ecf0f1; margin: 0; padding: 30px; }
+    .card { background: #fff; max-width: 600px; margin: 0 auto; padding: 32px; border-radius: 10px; box-shadow: 0 4px 16px rgba(0,0,0,0.12); }
+    h1 { text-align: center; color: #2c3e50; margin-bottom: 6px; }
+    p.subtitle { text-align: center; color: #7f8c8d; margin-bottom: 24px; }
+    label { display: block; margin-bottom: 4px; font-weight: bold; color: #34495e; }
+    input[type="text"], input[type="date"], input[type="number"],
+    select, textarea {
+      width: 100%; padding: 10px 12px; margin-bottom: 18px;
+      border: 1px solid #bdc3c7; border-radius: 6px; font-size: 0.95rem;
+    }
+    input:focus, select:focus, textarea:focus { outline: none; border-color: #2980b9; }
+    .row { display: flex; gap: 16px; }
+    .row > div { flex: 1; }
+    textarea { resize: vertical; height: 90px; }
+    .btn-group { display: flex; gap: 12px; margin-top: 8px; }
+    .btn { flex: 1; padding: 12px; font-size: 1rem; border: none; border-radius: 6px; cursor: pointer; }
+    .btn-primary { background: #2980b9; color: #fff; }
+    .btn-primary:hover { background: #1a6fa0; }
+    .btn-reset { background: #e74c3c; color: #fff; }
+    .btn-reset:hover { background: #c0392b; }
+    fieldset { border: 1px solid #bdc3c7; border-radius: 6px; padding: 16px; margin-bottom: 18px; }
+    legend { font-weight: bold; color: #2980b9; padding: 0 6px; }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>🏨 Royal Grand Hotel</h1>
+    <p class="subtitle">Room Booking Form</p>
+
+    <form action="#" method="post">
+
+      <!-- Guest Details -->
+      <fieldset>
+        <legend>Guest Information</legend>
+
+        <label for="fname">First Name</label>
+        <input type="text" id="fname" name="fname" placeholder="Enter first name" />
+
+        <label for="lname">Last Name</label>
+        <input type="text" id="lname" name="lname" placeholder="Enter last name" />
+
+        <label for="phone">Phone Number</label>
+        <input type="text" id="phone" name="phone" placeholder="+91 XXXXX XXXXX" />
+      </fieldset>
+
+      <!-- Booking Details -->
+      <fieldset>
+        <legend>Booking Details</legend>
+
+        <label for="room">Room Type</label>
+        <select id="room" name="room">
+          <option value="">-- Select Room Type --</option>
+          <option value="standard">Standard Room – ₹2,500/night</option>
+          <option value="deluxe">Deluxe Room – ₹4,000/night</option>
+          <option value="suite">Suite – ₹7,500/night</option>
+          <option value="presidential">Presidential Suite – ₹15,000/night</option>
+        </select>
+
+        <div class="row">
+          <div>
+            <label for="checkin">Check-In Date</label>
+            <input type="date" id="checkin" name="checkin" />
+          </div>
+          <div>
+            <label for="checkout">Check-Out Date</label>
+            <input type="date" id="checkout" name="checkout" />
+          </div>
+        </div>
+
+        <label for="guests">Number of Guests</label>
+        <input type="number" id="guests" name="guests" min="1" max="6" placeholder="1" />
+
+        <label for="floor">Floor Preference</label>
+        <select id="floor" name="floor">
+          <option value="">-- No Preference --</option>
+          <option value="low">Low Floor (1–5)</option>
+          <option value="mid">Mid Floor (6–10)</option>
+          <option value="high">High Floor (11+)</option>
+        </select>
+      </fieldset>
+
+      <!-- Special Requests -->
+      <fieldset>
+        <legend>Special Requests</legend>
+        <label for="requests">Any special requirements?</label>
+        <textarea id="requests" name="requests" placeholder="e.g. early check-in, extra pillows, vegetarian meals..."></textarea>
+      </fieldset>
+
+      <!-- Buttons -->
+      <div class="btn-group">
+        <button type="submit" class="btn btn-primary">Book Now</button>
+        <button type="reset" class="btn btn-reset">Clear Form</button>
+      </div>
+
+    </form>
+  </div>
+
+</body>
+</html>
