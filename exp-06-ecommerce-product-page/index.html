@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Experiment 6 – E-Commerce Product Page</title>
+  <style>
+    /* CSS text properties */
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background-color: #f5f6fa;
+      color: #2d3436;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Colors and typography */
+    header {
+      background-color: #2d3436;
+      color: #ffffff;
+      text-align: center;
+      padding: 16px;
+      font-size: 1.4rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 0 16px;
+    }
+
+    /* Box model: margin, border, padding, width, height */
+    .product-card {
+      background-color: #ffffff;
+      border: 1px solid #dfe6e9;
+      border-radius: 10px;
+      padding: 28px;
+      margin-bottom: 24px;
+      display: flex;
+      gap: 28px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+
+    .product-img {
+      width: 280px;
+      height: 280px;
+      object-fit: cover;
+      border: 3px solid #dfe6e9;
+      border-radius: 8px;
+      background-color: #f0f0f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5rem;
+      flex-shrink: 0;
+    }
+
+    .product-info {
+      flex: 1;
+    }
+
+    /* Font size, weight, color */
+    .product-name {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #2d3436;
+      margin: 0 0 6px;
+      text-decoration: none;
+    }
+
+    .product-brand {
+      font-size: 0.9rem;
+      color: #636e72;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+    }
+
+    .price-box {
+      margin: 14px 0;
+    }
+
+    .price-current {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #e17055;
+    }
+
+    .price-original {
+      font-size: 1rem;
+      color: #b2bec3;
+      text-decoration: line-through;
+      margin-left: 10px;
+    }
+
+    .discount-badge {
+      display: inline-block;
+      background-color: #00b894;
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: bold;
+      padding: 3px 8px;
+      border-radius: 4px;
+      margin-left: 10px;
+    }
+
+    .rating {
+      color: #f39c12;
+      font-size: 1.1rem;
+      margin-bottom: 12px;
+    }
+
+    .description {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: #555;
+      border-left: 4px solid #74b9ff;
+      padding-left: 12px;
+      margin-bottom: 16px;
+    }
+
+    /* Width, height on buttons */
+    .btn-cart {
+      background-color: #0984e3;
+      color: #fff;
+      border: none;
+      padding: 12px 28px;
+      font-size: 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      width: 180px;
+      height: 44px;
+      margin-right: 10px;
+    }
+
+    .btn-wishlist {
+      background-color: #fff;
+      color: #e17055;
+      border: 2px solid #e17055;
+      padding: 10px 20px;
+      font-size: 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      height: 44px;
+    }
+
+    .btn-cart:hover { background-color: #0773c5; }
+    .btn-wishlist:hover { background-color: #ffeaa7; }
+
+    /* Specs table */
+    .specs-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+    .specs-table td {
+      padding: 6px 10px;
+      border: 1px solid #dfe6e9;
+      font-size: 0.9rem;
+    }
+    .specs-table td:first-child {
+      font-weight: bold;
+      background-color: #f5f6fa;
+      width: 35%;
+    }
+  </style>
+</head>
+<body>
+
+  <header>ShopEase &mdash; Online Store</header>
+
+  <div class="container">
+
+    <!-- Product Card 1 -->
+    <div class="product-card">
+      <div class="product-img">💻</div>
+      <div class="product-info">
+        <p class="product-brand">TechPro Electronics</p>
+        <h2 class="product-name">TechPro UltraBook X15</h2>
+        <div class="rating">★★★★☆ <span style="color:#636e72;font-size:0.85rem;">(284 reviews)</span></div>
+        <div class="price-box">
+          <span class="price-current">₹54,999</span>
+          <span class="price-original">₹72,000</span>
+          <span class="discount-badge">24% OFF</span>
+        </div>
+        <p class="description">
+          15.6" FHD display, Intel Core i7 12th Gen, 16GB RAM, 512GB NVMe SSD.
+          Slim aluminum chassis, backlit keyboard, 10-hour battery life.
+          Perfect for students and professionals.
+        </p>
+        <table class="specs-table">
+          <tr><td>Processor</td><td>Intel Core i7-1255U</td></tr>
+          <tr><td>RAM</td><td>16 GB DDR5</td></tr>
+          <tr><td>Storage</td><td>512 GB NVMe SSD</td></tr>
+          <tr><td>Display</td><td>15.6" FHD IPS (1920×1080)</td></tr>
+          <tr><td>OS</td><td>Windows 11 Home</td></tr>
+        </table>
+        <br />
+        <button class="btn-cart">🛒 Add to Cart</button>
+        <button class="btn-wishlist">♥ Wishlist</button>
+      </div>
+    </div>
+
+    <!-- Product Card 2 -->
+    <div class="product-card">
+      <div class="product-img">📱</div>
+      <div class="product-info">
+        <p class="product-brand">Galaxy Mobiles</p>
+        <h2 class="product-name">Galaxy Nova 5G Pro</h2>
+        <div class="rating">★★★★★ <span style="color:#636e72;font-size:0.85rem;">(1,042 reviews)</span></div>
+        <div class="price-box">
+          <span class="price-current">₹29,499</span>
+          <span class="price-original">₹38,000</span>
+          <span class="discount-badge">22% OFF</span>
+        </div>
+        <p class="description">
+          6.7" AMOLED 120Hz display, 108MP triple camera, 5000mAh battery with
+          65W fast charging. Available in Midnight Black and Pearl White.
+        </p>
+        <table class="specs-table">
+          <tr><td>Chipset</td><td>Snapdragon 8 Gen 2</td></tr>
+          <tr><td>RAM</td><td>8 GB</td></tr>
+          <tr><td>Storage</td><td>256 GB UFS 3.1</td></tr>
+          <tr><td>Camera</td><td>108 MP + 12 MP + 5 MP</td></tr>
+          <tr><td>Battery</td><td>5000 mAh, 65W charging</td></tr>
+        </table>
+        <br />
+        <button class="btn-cart">🛒 Add to Cart</button>
+        <button class="btn-wishlist">♥ Wishlist</button>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
