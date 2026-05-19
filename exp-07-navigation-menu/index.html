@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Experiment 7 – Navigation Menu</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, sans-serif; background: #f4f6f8; color: #333; }
+
+    /* ── Section labels ── */
+    .section-title {
+      background: #2c3e50;
+      color: #ecf0f1;
+      padding: 10px 20px;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* ══════════════════════════════
+       1. display: block  – each link is its own full-width row
+    ══════════════════════════════ */
+    .nav-block { background: #34495e; }
+    .nav-block a {
+      display: block;             /* block: stacks vertically, full width */
+      color: #ecf0f1;
+      text-decoration: none;
+      padding: 12px 20px;
+      border-bottom: 1px solid #2c3e50;
+    }
+    .nav-block a:hover { background: #1a252f; }
+
+    /* ══════════════════════════════
+       2. display: inline – links sit in a line like text (no width/height)
+    ══════════════════════════════ */
+    .nav-inline { background: #8e44ad; padding: 14px 20px; }
+    .nav-inline a {
+      display: inline;            /* inline: flows like text */
+      color: #fff;
+      text-decoration: none;
+      margin-right: 18px;
+      font-size: 0.95rem;
+    }
+    .nav-inline a:hover { text-decoration: underline; }
+
+    /* ══════════════════════════════
+       3. display: inline-block – links sit in a line BUT accept padding/size
+    ══════════════════════════════ */
+    .nav-inline-block { background: #16a085; padding: 10px 16px; }
+    .nav-inline-block a {
+      display: inline-block;      /* inline-block: inline flow + box properties */
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 18px;
+      margin: 4px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 4px;
+      font-size: 0.95rem;
+    }
+    .nav-inline-block a:hover { background: rgba(255,255,255,0.35); }
+
+    /* ══════════════════════════════
+       4. float: left – classic horizontal nav using float
+    ══════════════════════════════ */
+    .nav-float { background: #c0392b; overflow: hidden; } /* overflow:hidden clears float */
+    .nav-float ul { list-style: none; }
+    .nav-float ul li { float: left; }                     /* float items left */
+    .nav-float ul li a {
+      display: block;
+      color: #fff;
+      text-decoration: none;
+      padding: 14px 20px;
+    }
+    .nav-float ul li a:hover { background: #922b21; }
+
+    /* clearfix: clear after floated elements */
+    .clearfix::after {
+      content: "";
+      display: table;
+      clear: both;               /* clear: stops content from wrapping around floats */
+    }
+
+    /* ══════════════════════════════
+       5. float: right – right-aligned nav item
+    ══════════════════════════════ */
+    .nav-float-right { background: #2980b9; overflow: hidden; }
+    .nav-float-right .left-links { float: left; }
+    .nav-float-right .right-link { float: right; }        /* float right example */
+    .nav-float-right a {
+      display: block;
+      float: left;
+      color: #fff;
+      text-decoration: none;
+      padding: 14px 18px;
+    }
+    .nav-float-right .right-link a { float: none; background: #1a6fa0; }
+    .nav-float-right a:hover { background: #1c598a; }
+
+    /* ── Demo content area ── */
+    .content { max-width: 800px; margin: 30px auto; padding: 0 20px; }
+    .box {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .box h3 { color: #2c3e50; margin-bottom: 8px; }
+    .box p { color: #555; font-size: 0.9rem; line-height: 1.6; }
+    code { background: #eee; padding: 2px 6px; border-radius: 3px; font-size: 0.85rem; }
+  </style>
+</head>
+<body>
+
+  <!-- 1. Block display -->
+  <div class="section-title">1. display: block — Vertical Sidebar Nav</div>
+  <nav class="nav-block">
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Services</a>
+    <a href="#">Portfolio</a>
+    <a href="#">Contact</a>
+  </nav>
+
+  <!-- 2. Inline display -->
+  <div class="section-title">2. display: inline — Links flow like text (no padding box)</div>
+  <nav class="nav-inline">
+    <a href="#">Home</a>
+    <a href="#">Blog</a>
+    <a href="#">Gallery</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+  </nav>
+
+  <!-- 3. Inline-block display -->
+  <div class="section-title">3. display: inline-block — Inline but with padding/size</div>
+  <nav class="nav-inline-block">
+    <a href="#">Home</a>
+    <a href="#">Products</a>
+    <a href="#">Pricing</a>
+    <a href="#">Blog</a>
+    <a href="#">Contact</a>
+  </nav>
+
+  <!-- 4. Float left nav -->
+  <div class="section-title">4. float: left — Classic Horizontal Float Nav</div>
+  <nav class="nav-float clearfix">
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">News</a></li>
+      <li><a href="#">Sports</a></li>
+      <li><a href="#">Tech</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- 5. Float right -->
+  <div class="section-title">5. float: right — Mixed left/right float nav</div>
+  <nav class="nav-float-right clearfix">
+    <div class="left-links clearfix">
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Services</a>
+    </div>
+    <div class="right-link">
+      <a href="#">Login</a>
+    </div>
+  </nav>
+
+  <!-- Explanation boxes -->
+  <div class="content">
+    <div class="box">
+      <h3>display: block</h3>
+      <p>Each element starts on a new line and stretches full width. Used for <code>div</code>, <code>p</code>, <code>h1</code>–<code>h6</code> by default. Ideal for vertical menus.</p>
+    </div>
+    <div class="box">
+      <h3>display: inline</h3>
+      <p>Element flows with surrounding text. Cannot set width/height. Used for <code>span</code>, <code>a</code>, <code>strong</code> by default.</p>
+    </div>
+    <div class="box">
+      <h3>display: inline-block</h3>
+      <p>Flows inline like text, but respects width, height, and padding. Great for nav buttons side by side.</p>
+    </div>
+    <div class="box">
+      <h3>float &amp; clear</h3>
+      <p><code>float: left</code> or <code>float: right</code> removes the element from normal flow and pushes it to the side. <code>clear: both</code> (or the clearfix hack) prevents subsequent elements from wrapping around the float.</p>
+    </div>
+  </div>
+
+</body>
+</html>
