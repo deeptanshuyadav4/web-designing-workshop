@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Experiment 8 – Student Profile Cards</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, sans-serif; background: #f0f3f6; padding: 30px; }
+
+    h1 { text-align: center; color: #2c3e50; margin-bottom: 6px; }
+    p.sub { text-align: center; color: #7f8c8d; margin-bottom: 30px; font-size: 0.9rem; }
+
+    /* ── Flexbox container ── */
+    .card-grid {
+      display: flex;              /* enable flexbox */
+      flex-wrap: wrap;            /* wrap cards to next line if needed */
+      justify-content: center;    /* centre cards horizontally */
+      align-items: stretch;       /* all cards same height in a row */
+      gap: 24px;                  /* space between cards */
+    }
+
+    /* ── Individual card ── */
+    .card {
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+      width: 240px;
+      padding: 24px 20px;
+
+      /* Flex container for card's own content */
+      display: flex;
+      flex-direction: column;     /* stack avatar → name → details vertically */
+      align-items: center;        /* centre everything horizontally inside card */
+      gap: 10px;
+    }
+
+    /* Avatar circle */
+    .avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .card h3 { font-size: 1.05rem; color: #2d3436; text-align: center; }
+    .card .roll { font-size: 0.8rem; color: #636e72; }
+    .card .branch {
+      font-size: 0.78rem;
+      background: #dfe6e9;
+      color: #2d3436;
+      padding: 3px 10px;
+      border-radius: 20px;
+    }
+
+    /* Skills row inside card */
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 6px;
+      margin-top: 4px;
+    }
+    .skill-tag {
+      font-size: 0.72rem;
+      background: #eaf4fb;
+      color: #2980b9;
+      border: 1px solid #aed6f1;
+      padding: 2px 8px;
+      border-radius: 12px;
+    }
+
+    /* Stat row */
+    .stats {
+      display: flex;
+      justify-content: space-around;
+      width: 100%;
+      border-top: 1px solid #ecf0f1;
+      padding-top: 10px;
+      margin-top: 4px;
+    }
+    .stat { text-align: center; }
+    .stat strong { display: block; font-size: 1rem; color: #2d3436; }
+    .stat span { font-size: 0.72rem; color: #95a5a6; }
+
+    .btn-profile {
+      width: 100%;
+      padding: 9px;
+      background: #2980b9;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      margin-top: 6px;
+    }
+    .btn-profile:hover { background: #1a6fa0; }
+
+    /* ── flex-direction: row demo ── */
+    .demo-label {
+      text-align: center;
+      margin: 32px 0 12px;
+      font-weight: bold;
+      color: #8e44ad;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .horizontal-card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      max-width: 500px;
+      margin: 0 auto 12px;
+      padding: 18px 20px;
+      display: flex;
+      flex-direction: row;        /* row: avatar left, info right */
+      align-items: center;
+      gap: 18px;
+    }
+    .horizontal-card .info h3 { color: #2d3436; margin-bottom: 4px; }
+    .horizontal-card .info p { font-size: 0.85rem; color: #636e72; }
+  </style>
+</head>
+<body>
+
+  <h1>Student Profile Cards</h1>
+  <p class="sub">Flexbox layout — <code>flex-direction: column</code>, <code>justify-content: center</code>, <code>align-items: center</code></p>
+
+  <!-- Cards in a flex row with wrap -->
+  <div class="card-grid">
+
+    <div class="card">
+      <div class="avatar" style="background:#3498db;">👨‍💻</div>
+      <h3>Rahul Sharma</h3>
+      <span class="roll">Roll: 23CSE001</span>
+      <span class="branch">Computer Science</span>
+      <div class="skills">
+        <span class="skill-tag">HTML</span>
+        <span class="skill-tag">CSS</span>
+        <span class="skill-tag">Python</span>
+      </div>
+      <div class="stats">
+        <div class="stat"><strong>8.7</strong><span>CGPA</span></div>
+        <div class="stat"><strong>92%</strong><span>Attend.</span></div>
+        <div class="stat"><strong>3rd</strong><span>Year</span></div>
+      </div>
+      <button class="btn-profile">View Profile</button>
+    </div>
+
+    <div class="card">
+      <div class="avatar" style="background:#9b59b6;">👩‍🎨</div>
+      <h3>Priya Patel</h3>
+      <span class="roll">Roll: 23ECE014</span>
+      <span class="branch">Electronics</span>
+      <div class="skills">
+        <span class="skill-tag">JavaScript</span>
+        <span class="skill-tag">Figma</span>
+        <span class="skill-tag">C++</span>
+      </div>
+      <div class="stats">
+        <div class="stat"><strong>9.1</strong><span>CGPA</span></div>
+        <div class="stat"><strong>97%</strong><span>Attend.</span></div>
+        <div class="stat"><strong>3rd</strong><span>Year</span></div>
+      </div>
+      <button class="btn-profile">View Profile</button>
+    </div>
+
+    <div class="card">
+      <div class="avatar" style="background:#27ae60;">👨‍🔬</div>
+      <h3>Arjun Mehta</h3>
+      <span class="roll">Roll: 23ME007</span>
+      <span class="branch">Mechanical</span>
+      <div class="skills">
+        <span class="skill-tag">AutoCAD</span>
+        <span class="skill-tag">MATLAB</span>
+        <span class="skill-tag">C</span>
+      </div>
+      <div class="stats">
+        <div class="stat"><strong>7.9</strong><span>CGPA</span></div>
+        <div class="stat"><strong>88%</strong><span>Attend.</span></div>
+        <div class="stat"><strong>2nd</strong><span>Year</span></div>
+      </div>
+      <button class="btn-profile">View Profile</button>
+    </div>
+
+    <div class="card">
+      <div class="avatar" style="background:#e67e22;">👩‍💼</div>
+      <h3>Sneha Gupta</h3>
+      <span class="roll">Roll: 23IT022</span>
+      <span class="branch">Info. Technology</span>
+      <div class="skills">
+        <span class="skill-tag">React</span>
+        <span class="skill-tag">Node.js</span>
+        <span class="skill-tag">SQL</span>
+      </div>
+      <div class="stats">
+        <div class="stat"><strong>8.4</strong><span>CGPA</span></div>
+        <div class="stat"><strong>94%</strong><span>Attend.</span></div>
+        <div class="stat"><strong>3rd</strong><span>Year</span></div>
+      </div>
+      <button class="btn-profile">View Profile</button>
+    </div>
+
+  </div>
+
+  <!-- flex-direction: row demo -->
+  <p class="demo-label">flex-direction: row — Horizontal card layout</p>
+
+  <div class="horizontal-card">
+    <div class="avatar" style="background:#c0392b; width:60px; height:60px; font-size:1.6rem;">👨‍🏫</div>
+    <div class="info">
+      <h3>Prof. R. Verma</h3>
+      <p>Web Design Faculty &nbsp;|&nbsp; Lab-3</p>
+      <p>verma@college.edu</p>
+    </div>
+  </div>
+
+  <div class="horizontal-card">
+    <div class="avatar" style="background:#16a085; width:60px; height:60px; font-size:1.6rem;">👩‍🏫</div>
+    <div class="info">
+      <h3>Dr. A. Sharma</h3>
+      <p>Mathematics Faculty &nbsp;|&nbsp; B-204</p>
+      <p>sharma@college.edu</p>
+    </div>
+  </div>
+
+</body>
+</html>
