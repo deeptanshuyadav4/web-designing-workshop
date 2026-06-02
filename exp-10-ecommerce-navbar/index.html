@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Experiment 10 – Responsive E-Commerce Navbar</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, sans-serif; background: #f5f6fa; }
+
+    /* ── Navbar ── */
+    .navbar {
+      background: #2d3436;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .navbar-brand {
+      color: #fff;
+      font-size: 1.4rem;
+      font-weight: bold;
+      padding: 14px 0;
+      text-decoration: none;
+      letter-spacing: 1px;
+    }
+    .navbar-brand span { color: #e17055; }
+
+    /* Search bar */
+    .navbar-search {
+      display: flex;
+      align-items: center;
+      background: #fff;
+      border-radius: 6px;
+      overflow: hidden;
+      width: 320px;
+    }
+    .navbar-search input {
+      border: none;
+      padding: 8px 12px;
+      font-size: 0.9rem;
+      width: 100%;
+      outline: none;
+    }
+    .navbar-search button {
+      background: #e17055;
+      border: none;
+      color: #fff;
+      padding: 8px 14px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    /* Nav links */
+    .navbar-links {
+      display: flex;
+      align-items: center;
+      list-style: none;
+      gap: 4px;
+    }
+    .navbar-links a {
+      color: #dfe6e9;
+      text-decoration: none;
+      padding: 10px 12px;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .navbar-links a:hover { background: #636e72; color: #fff; }
+    .cart-badge {
+      background: #e17055;
+      color: #fff;
+      font-size: 0.7rem;
+      border-radius: 50%;
+      width: 18px;
+      height: 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Category bar */
+    .cat-bar {
+      background: #e17055;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0;
+    }
+    .cat-bar a {
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 18px;
+      font-size: 0.85rem;
+    }
+    .cat-bar a:hover { background: rgba(0,0,0,0.15); }
+
+    /* ── Media queries ── */
+
+    /* Tablet: hide search bar, shrink links */
+    @media (max-width: 900px) {
+      .navbar-search { width: 200px; }
+    }
+
+    @media (max-width: 720px) {
+      .navbar {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 12px 16px;
+        gap: 10px;
+      }
+      .navbar-brand { text-align: center; }
+      .navbar-search { width: 100%; }
+      .navbar-links {
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .cat-bar { justify-content: center; }
+    }
+
+    @media (max-width: 480px) {
+      .navbar-links a span.label { display: none; }
+      .cat-bar a { padding: 8px 12px; font-size: 0.8rem; }
+    }
+
+    /* ── Page content ── */
+    .hero {
+      background: linear-gradient(135deg, #2d3436 0%, #636e72 100%);
+      color: #fff;
+      text-align: center;
+      padding: 60px 20px;
+    }
+    .hero h1 { font-size: 2.2rem; margin-bottom: 10px; }
+    .hero p { font-size: 1rem; color: #dfe6e9; margin-bottom: 24px; }
+    .hero-btn {
+      background: #e17055;
+      color: #fff;
+      border: none;
+      padding: 12px 32px;
+      font-size: 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .note {
+      max-width: 700px;
+      margin: 30px auto;
+      background: #fff;
+      border-left: 5px solid #0984e3;
+      padding: 16px 20px;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: #444;
+    }
+    .note strong { color: #2d3436; }
+    code { background: #eee; padding: 2px 5px; border-radius: 3px; font-size: 0.82rem; }
+  </style>
+</head>
+<body>
+
+  <!-- Main Navbar -->
+  <nav class="navbar">
+    <a href="#" class="navbar-brand">Shop<span>Ease</span></a>
+
+    <div class="navbar-search">
+      <input type="text" placeholder="Search products…" />
+      <button>🔍</button>
+    </div>
+
+    <ul class="navbar-links">
+      <li><a href="#"><span>🏠</span><span class="label">Home</span></a></li>
+      <li><a href="#"><span>❤️</span><span class="label">Wishlist</span></a></li>
+      <li>
+        <a href="#">
+          <span>🛒</span><span class="label">Cart</span>
+          <span class="cart-badge">3</span>
+        </a>
+      </li>
+      <li><a href="#"><span>👤</span><span class="label">Login</span></a></li>
+    </ul>
+  </nav>
+
+  <!-- Category Bar -->
+  <div class="cat-bar">
+    <a href="#">📱 Mobiles</a>
+    <a href="#">💻 Laptops</a>
+    <a href="#">🎧 Audio</a>
+    <a href="#">⌚ Wearables</a>
+    <a href="#">📷 Cameras</a>
+    <a href="#">🖥️ Monitors</a>
+    <a href="#">🔌 Accessories</a>
+    <a href="#">🎮 Gaming</a>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>Big Summer Sale 🎉</h1>
+    <p>Up to 50% off on top electronics. Limited time offer!</p>
+    <button class="hero-btn">Shop Now</button>
+  </section>
+
+  <!-- Notes -->
+  <div class="note">
+    <strong>Responsive Technique Used:</strong><br />
+    This navbar uses <code>display: flex</code> with <code>justify-content: space-between</code> and
+    <code>align-items: center</code> on desktop. At <code>≤720px</code>, the flex direction switches
+    to <code>column</code> so logo, search, and links stack vertically. At <code>≤480px</code>,
+    link text labels are hidden with <code>display: none</code> leaving only icons visible,
+    keeping the navbar compact on small screens.
+  </div>
+
+</body>
+</html>
