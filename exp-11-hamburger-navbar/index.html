@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Experiment 11 – Hamburger Navbar</title>
+  <style>
+    /* ── Reset ── */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, sans-serif; background: #f0f3f6; }
+
+    /* ══════════════════════════════
+       HAMBURGER MENU — Checkbox Hack
+       No JavaScript required.
+       Hidden checkbox controls menu open/close state.
+    ══════════════════════════════ */
+
+    /* Hide the real checkbox — it still receives clicks */
+    #menu-toggle { display: none; }
+
+    /* ── Navbar shell ── */
+    .navbar {
+      background: #1a1a2e;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 200;
+    }
+
+    .brand {
+      color: #e94560;
+      font-size: 1.4rem;
+      font-weight: bold;
+      padding: 16px 0;
+      text-decoration: none;
+      letter-spacing: 1px;
+    }
+
+    /* ── Hamburger icon (3 bars using spans) ── */
+    .hamburger {
+      display: none;          /* hidden on desktop */
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 10px 0;
+      /* label wraps the checkbox — clicking label toggles checkbox */
+    }
+    .hamburger span {
+      display: block;
+      width: 26px;
+      height: 3px;
+      background: #fff;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    /* ── Nav links ── */
+    .nav-links {
+      list-style: none;
+      display: flex;          /* row on desktop */
+      align-items: center;
+      gap: 4px;
+    }
+    .nav-links a {
+      color: #ccc;
+      text-decoration: none;
+      padding: 10px 14px;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      display: block;
+    }
+    .nav-links a:hover { background: #16213e; color: #e94560; }
+    .nav-links .cta a {
+      background: #e94560;
+      color: #fff;
+      border-radius: 20px;
+      padding: 9px 18px;
+    }
+    .nav-links .cta a:hover { background: #c73652; }
+
+    /* ════════════════════════════════
+       MOBILE-FIRST media query
+       On screens ≤ 768px, collapse nav
+    ════════════════════════════════ */
+    @media (max-width: 768px) {
+
+      /* Show hamburger icon */
+      .hamburger { display: flex; }
+
+      /* Stack links vertically, hide by default */
+      .nav-links {
+        flex-direction: column;
+        align-items: stretch;
+        background: #16213e;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        max-height: 0;              /* collapsed */
+        overflow: hidden;
+        transition: max-height 0.35s ease;
+        gap: 0;
+      }
+      .nav-links a { padding: 14px 24px; border-bottom: 1px solid #1a1a2e; }
+      .nav-links .cta a { margin: 10px 24px; border-radius: 6px; }
+
+      /* When checkbox is checked → expand menu */
+      #menu-toggle:checked ~ .nav-links {
+        max-height: 400px;
+      }
+
+      /* Animate hamburger bars into ✕ when open */
+      #menu-toggle:checked ~ .hamburger span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+      }
+      #menu-toggle:checked ~ .hamburger span:nth-child(2) {
+        opacity: 0;
+      }
+      #menu-toggle:checked ~ .hamburger span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+      }
+    }
+
+    /* ── Hero section ── */
+    .hero {
+      text-align: center;
+      padding: 70px 20px;
+      background: linear-gradient(135deg, #1a1a2e, #16213e);
+      color: #fff;
+    }
+    .hero h1 { font-size: 2rem; margin-bottom: 12px; }
+    .hero h1 span { color: #e94560; }
+    .hero p { color: #aaa; margin-bottom: 28px; line-height: 1.7; }
+    .hero-btn {
+      background: #e94560; color: #fff; border: none;
+      padding: 13px 36px; font-size: 1rem; border-radius: 30px; cursor: pointer;
+    }
+
+    /* ── Explanation card ── */
+    .explain {
+      max-width: 700px; margin: 32px auto; background: #fff;
+      border-left: 5px solid #e94560; padding: 20px 24px;
+      border-radius: 6px; font-size: 0.9rem; line-height: 1.75; color: #444;
+    }
+    .explain h3 { color: #1a1a2e; margin-bottom: 10px; }
+    code { background: #f0f3f6; padding: 2px 6px; border-radius: 3px; font-size: 0.82rem; }
+    ol { padding-left: 20px; margin-top: 8px; }
+    ol li { margin-bottom: 6px; }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="#" class="brand">&#9670; DevFolio</a>
+
+    <!--
+      Checkbox hack:
+      1. Hidden <input type="checkbox"> with id="menu-toggle"
+      2. <label for="menu-toggle"> acts as the clickable hamburger icon
+      3. CSS sibling selector (#menu-toggle:checked ~ .nav-links)
+         expands the menu when checkbox is checked
+    -->
+    <input type="checkbox" id="menu-toggle" />
+
+    <label class="hamburger" for="menu-toggle" aria-label="Toggle navigation">
+      <span></span>
+      <span></span>
+      <span></span>
+    </label>
+
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Projects</a></li>
+      <li><a href="#">Skills</a></li>
+      <li><a href="#">Blog</a></li>
+      <li class="cta"><a href="#">Contact Me</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero">
+    <h1>Hello, I'm <span>Deeptanshu</span> 👋</h1>
+    <p>
+      Web Designer &amp; Developer<br />
+      Building beautiful, responsive experiences for the modern web.
+    </p>
+    <button class="hero-btn">View My Work</button>
+  </section>
+
+  <div class="explain">
+    <h3>How the Hamburger Menu Works (Checkbox Hack)</h3>
+    <ol>
+      <li>A hidden <code>&lt;input type="checkbox"&gt;</code> stores open/closed state — no JS needed.</li>
+      <li>The <code>&lt;label for="menu-toggle"&gt;</code> contains the three bar <code>&lt;span&gt;</code>s and acts as the clickable button.</li>
+      <li>On mobile (<code>@media max-width: 768px</code>), the <code>.nav-links</code> is collapsed with <code>max-height: 0; overflow: hidden</code>.</li>
+      <li>When the checkbox is checked, the sibling selector <code>#menu-toggle:checked ~ .nav-links</code> sets <code>max-height: 400px</code>, smoothly expanding the menu via CSS <code>transition</code>.</li>
+      <li>The three bars animate into an ✕ using <code>transform: rotate()</code> and <code>opacity: 0</code> on the middle bar.</li>
+    </ol>
+  </div>
+
+</body>
+</html>
