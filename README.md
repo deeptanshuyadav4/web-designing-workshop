@@ -29,3 +29,14 @@ Open any `index.html` file directly in a browser — no build tools or server re
 ## Author
 
 **Deeptanshu Yadav** | `deeptanshuyadav4@gmail.com`
+
+## Commit History Summary
+
+All experiments were built incrementally with one commit per logical step,
+spread across April–June 2026 to reflect the actual lab schedule.
+
+## Technologies Used
+
+- HTML5 (semantic elements, forms, tables, media)
+- CSS3 (box model, flexbox, grid, media queries, transitions)
+- No frameworks — pure beginner-friendly HTML & CSS
