@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FitLife — BMI & Fitness Calculator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Shared nav -->
+  <nav class="site-nav">
+    <a href="index.html" class="brand">💪 FitLife</a>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="components.html">Components</a></li>
+      <li><a href="tailwind.html">Tailwind</a></li>
+      <li><a href="calculator.html" class="active">Calculator</a></li>
+      <li><a href="members.html">Members</a></li>
+      <li><a href="oop.html">OOP</a></li>
+      <li><a href="react.html">React Docs</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-wrapper">
+
+    <h2 class="section-title">BMI &amp; Fitness Goal Calculator</h2>
+    <p class="section-sub">
+      Experiment: JavaScript Variables, Conditions (if-else), Loops<br />
+      Enter your details — results are calculated and displayed dynamically.
+    </p>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px;">
+
+      <!-- ── INPUT FORM ── -->
+      <div class="card">
+        <h3>Your Details</h3>
+
+        <div class="form-group">
+          <label for="inp-name">Your Name</label>
+          <input type="text" id="inp-name" placeholder="e.g. Rahul Sharma" />
+        </div>
+
+        <div class="form-group">
+          <label for="inp-height">Height (cm)</label>
+          <input type="number" id="inp-height" placeholder="e.g. 175" min="100" max="250" />
+        </div>
+
+        <div class="form-group">
+          <label for="inp-weight">Weight (kg)</label>
+          <input type="number" id="inp-weight" placeholder="e.g. 70" min="20" max="300" />
+        </div>
+
+        <div class="form-group">
+          <label for="inp-age">Age (years)</label>
+          <input type="number" id="inp-age" placeholder="e.g. 22" min="10" max="100" />
+        </div>
+
+        <div class="form-group">
+          <label for="inp-days">Workout Days per Week (1–7)</label>
+          <input type="number" id="inp-days" placeholder="e.g. 4" min="1" max="7" />
+        </div>
+
+        <div class="form-group">
+          <label for="inp-goal">Fitness Goal</label>
+          <select id="inp-goal">
+            <option value="">-- Select Goal --</option>
+            <option value="loss">Weight Loss</option>
+            <option value="muscle">Muscle Gain</option>
+            <option value="endurance">Endurance</option>
+            <option value="maintain">Maintain Fitness</option>
+          </select>
+        </div>
+
+        <button class="btn btn-primary" onclick="calculate()" style="width:100%; margin-top:8px;">
+          Calculate →
+        </button>
+        <button class="btn btn-outline" onclick="resetCalc()" style="width:100%; margin-top:10px;">
+          Reset
+        </button>
+      </div>
+
+      <!-- ── RESULTS ── -->
+      <div>
+        <div class="card" id="result-bmi" style="display:none;">
+          <h3>BMI Result</h3>
+          <div id="bmi-output"></div>
+        </div>
+
+        <div class="card" id="result-calories" style="display:none; margin-top:0;">
+          <h3>Daily Calorie Target</h3>
+          <div id="calorie-output"></div>
+        </div>
+
+        <div class="card" id="result-schedule" style="display:none; margin-top:0;">
+          <h3>Weekly Workout Schedule</h3>
+          <div id="schedule-output"></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ── JS CONCEPTS EXPLAINED ── -->
+    <div class="card" style="margin-top:24px;">
+      <h3>JavaScript Concepts Used in calculator.js</h3>
+      <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; font-size:0.85rem; color:var(--muted);">
+        <div>
+          <p style="color:var(--primary); font-weight:600; margin-bottom:6px;">Variables</p>
+          <p><code>const</code>, <code>let</code> to store height, weight, BMI value, calorie targets, and day names.</p>
+        </div>
+        <div>
+          <p style="color:var(--primary); font-weight:600; margin-bottom:6px;">if-else Conditions</p>
+          <p>BMI classification chain: Underweight → Normal → Overweight → Obese.</p>
+        </div>
+        <div>
+          <p style="color:var(--primary); font-weight:600; margin-bottom:6px;">Loops</p>
+          <p><code>for</code> loop iterates over workout days to build the weekly schedule table.</p>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /page-wrapper -->
+
+  <footer style="background:#0a0a14; color:var(--muted); text-align:center; padding:20px; font-size:0.85rem;">
+    &copy; 2026 <span style="color:var(--primary);">FitLife Fitness Studio</span> &nbsp;|&nbsp; Deeptanshu Yadav
+  </footer>
+
+  <script src="js/calculator.js"></script>
+</body>
+</html>
