@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FitLife Fitness Studio — Home</title>
+
+  <!-- Bootstrap 5 CSS via CDN -->
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+
+  <style>
+    /* Custom overrides on top of Bootstrap */
+    body { background: #0f0f1a; color: #e0e0e0; }
+
+    /* ── Hero section ── */
+    .hero-section {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      padding: 100px 0 80px;
+      text-align: center;
+    }
+    .hero-section h1 { font-size: 3rem; font-weight: 800; color: #ffffff; }
+    .hero-section h1 span { color: #e94560; }
+    .hero-section p { font-size: 1.15rem; color: #a0a0b0; max-width: 600px; margin: 16px auto 32px; }
+    .btn-fit    { background: #e94560; color: #fff; border: none; padding: 13px 36px;
+                  border-radius: 30px; font-size: 1rem; text-decoration: none; }
+    .btn-fit:hover { background: #c73652; color: #fff; }
+    .btn-outline-fit { border: 2px solid #e94560; color: #e94560; padding: 11px 30px;
+                       border-radius: 30px; font-size: 1rem; text-decoration: none; margin-left: 12px; }
+    .btn-outline-fit:hover { background: #e94560; color: #fff; }
+
+    /* ── Stats bar ── */
+    .stats-bar { background: #e94560; padding: 20px 0; }
+    .stats-bar .stat-item { text-align: center; color: #fff; }
+    .stats-bar .stat-item h3 { font-size: 2rem; font-weight: 800; margin: 0; }
+    .stats-bar .stat-item p  { font-size: 0.85rem; margin: 0; opacity: 0.85; }
+
+    /* ── Feature cards ── */
+    .features-section { padding: 70px 0; background: #1a1a2e; }
+    .features-section h2 { color: #fff; font-weight: 700; }
+    .features-section .sub { color: #a0a0b0; }
+    .feature-card {
+      background: #16213e;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 30px 24px;
+      text-align: center;
+      height: 100%;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .feature-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 30px rgba(233,69,96,0.2);
+    }
+    .feature-card .icon { font-size: 2.5rem; margin-bottom: 14px; }
+    .feature-card h5 { color: #ffffff; font-weight: 700; margin-bottom: 10px; }
+    .feature-card p  { color: #a0a0b0; font-size: 0.9rem; line-height: 1.6; }
+
+    /* ── Membership plans section ── */
+    .plans-section { padding: 70px 0; background: #0f0f1a; }
+    .plans-section h2 { color: #fff; font-weight: 700; }
+    .plan-card {
+      background: #16213e;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 36px 24px;
+      text-align: center;
+      height: 100%;
+      transition: transform 0.2s;
+    }
+    .plan-card.featured {
+      border-color: #e94560;
+      box-shadow: 0 0 30px rgba(233,69,96,0.25);
+      transform: scale(1.03);
+    }
+    .plan-card h5 { color: #e94560; font-weight: 700; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; }
+    .plan-card .price { font-size: 2.4rem; font-weight: 800; color: #fff; margin: 12px 0; }
+    .plan-card .price span { font-size: 1rem; color: #a0a0b0; font-weight: 400; }
+    .plan-card ul { list-style: none; padding: 0; margin: 18px 0; text-align: left; }
+    .plan-card ul li { color: #a0a0b0; padding: 5px 0; font-size: 0.9rem; }
+    .plan-card ul li::before { content: "✓  "; color: #e94560; font-weight: 700; }
+
+    /* ── Pages nav section ── */
+    .pages-section { padding: 60px 0; background: #1a1a2e; }
+    .pages-section h2 { color: #fff; font-weight: 700; }
+    .page-link-card {
+      background: #0f3460;
+      border-radius: 10px;
+      padding: 24px;
+      text-decoration: none;
+      display: block;
+      transition: background 0.2s, transform 0.2s;
+      height: 100%;
+    }
+    .page-link-card:hover { background: #e94560; transform: translateY(-4px); }
+    .page-link-card .pg-icon { font-size: 2rem; margin-bottom: 10px; }
+    .page-link-card h6 { color: #fff; font-weight: 700; margin-bottom: 5px; }
+    .page-link-card p { color: rgba(255,255,255,0.7); font-size: 0.82rem; margin: 0; }
+
+    /* ── Footer ── */
+    footer { background: #0a0a14; color: #a0a0b0; text-align: center; padding: 24px; font-size: 0.88rem; }
+    footer span { color: #e94560; }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════
+       BOOTSTRAP NAVBAR — responsive, collapses on mobile
+  ══════════════════════════════════════════════ -->
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background:#16213e; border-bottom:1px solid rgba(255,255,255,0.07);">
+    <div class="container">
+      <!-- Brand -->
+      <a class="navbar-brand fw-bold" href="index.html" style="color:#e94560;">💪 FitLife</a>
+
+      <!-- Hamburger toggle (Bootstrap handles show/hide via JS) -->
+      <button class="navbar-toggler" type="button"
+              data-bs-toggle="collapse" data-bs-target="#navbarMain"
+              aria-controls="navbarMain" aria-expanded="false">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Collapsible links -->
+      <div class="collapse navbar-collapse" id="navbarMain">
+        <ul class="navbar-nav ms-auto gap-1">
+          <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="components.html">Components</a></li>
+          <li class="nav-item"><a class="nav-link" href="tailwind.html">Tailwind</a></li>
+          <li class="nav-item"><a class="nav-link" href="calculator.html">Calculator</a></li>
+          <li class="nav-item"><a class="nav-link" href="members.html">Members</a></li>
+          <li class="nav-item"><a class="nav-link" href="oop.html">OOP</a></li>
+          <li class="nav-item"><a class="nav-link" href="react.html">React Docs</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ══════════════════════════════════════════
+       HERO SECTION
+  ══════════════════════════════════════════════ -->
+  <section class="hero-section">
+    <div class="container">
+      <h1>Transform Your <span>Body &amp; Mind</span></h1>
+      <p>
+        Join FitLife Fitness Studio — your complete health partner.
+        Expert trainers, modern equipment, flexible memberships.
+      </p>
+      <a href="members.html" class="btn-fit">Join Now</a>
+      <a href="components.html" class="btn-outline-fit">Explore Plans</a>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       STATS BAR — Bootstrap grid (row / col)
+  ══════════════════════════════════════════════ -->
+  <div class="stats-bar">
+    <div class="container">
+      <!-- Bootstrap grid: 4 equal columns on md+, 2x2 on small -->
+      <div class="row text-center g-3">
+        <div class="col-6 col-md-3">
+          <div class="stat-item">
+            <h3>1,200+</h3><p>Active Members</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="stat-item">
+            <h3>25+</h3><p>Expert Trainers</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="stat-item">
+            <h3>50+</h3><p>Classes / Week</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="stat-item">
+            <h3>8</h3><p>Years Experience</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       FEATURES SECTION — Bootstrap grid cards
+       container → row → col (responsive grid)
+  ══════════════════════════════════════════════ -->
+  <section class="features-section">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2>Why Choose <span style="color:#e94560;">FitLife?</span></h2>
+        <p class="sub">Everything you need to reach your fitness goals</p>
+      </div>
+
+      <!--
+        Bootstrap Grid System:
+        - .container  → centres content, adds horizontal padding
+        - .row        → creates a flex row, uses negative margins
+        - .col-12     → full width on all screens
+        - .col-md-6   → half width on md (≥768px) screens
+        - .col-lg-4   → one-third width on lg (≥992px) screens
+        - g-4         → adds gap (gutter) between columns
+      -->
+      <div class="row g-4">
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="feature-card">
+            <div class="icon">🏋️</div>
+            <h5>Modern Equipment</h5>
+            <p>State-of-the-art machines and free weights. Updated every 2 years to keep you ahead.</p>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="feature-card">
+            <div class="icon">👨‍💼</div>
+            <h5>Expert Trainers</h5>
+            <p>Certified personal trainers who craft custom plans tailored to your specific goals.</p>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="feature-card">
+            <div class="icon">🧘</div>
+            <h5>Yoga & Wellness</h5>
+            <p>Daily yoga, meditation, and mindfulness classes for holistic health.</p>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="feature-card">
+            <div class="icon">🥗</div>
+            <h5>Nutrition Guidance</h5>
+            <p>Personalized diet plans and nutrition consultations with certified dietitians.</p>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="feature-card">
+            <div class="icon">📱</div>
+            <h5>FitLife App</h5>
+            <p>Track workouts, book classes, and monitor your progress from your phone.</p>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="feature-card">
+            <div class="icon">🕐</div>
+            <h5>24/7 Access</h5>
+            <p>Open round the clock. Work out on your schedule, not ours.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       MEMBERSHIP PLANS — Bootstrap grid (3 cols)
+  ══════════════════════════════════════════════ -->
+  <section class="plans-section">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2>Membership <span style="color:#e94560;">Plans</span></h2>
+        <p style="color:#a0a0b0;">Simple pricing, no hidden fees</p>
+      </div>
+      <div class="row g-4 justify-content-center">
+        <div class="col-12 col-md-4">
+          <div class="plan-card">
+            <h5>Basic</h5>
+            <div class="price">₹999 <span>/month</span></div>
+            <ul>
+              <li>Gym Floor Access</li>
+              <li>2 Group Classes / Week</li>
+              <li>Locker Room</li>
+            </ul>
+            <a href="members.html" class="btn-outline-fit">Get Started</a>
+          </div>
+        </div>
+        <div class="col-12 col-md-4">
+          <div class="plan-card featured">
+            <h5>Pro</h5>
+            <div class="price">₹1,999 <span>/month</span></div>
+            <ul>
+              <li>Everything in Basic</li>
+              <li>Unlimited Group Classes</li>
+              <li>1 PT Session / Month</li>
+              <li>Nutrition Consultation</li>
+            </ul>
+            <a href="members.html" class="btn-fit">Most Popular</a>
+          </div>
+        </div>
+        <div class="col-12 col-md-4">
+          <div class="plan-card">
+            <h5>Elite</h5>
+            <div class="price">₹3,499 <span>/month</span></div>
+            <ul>
+              <li>Everything in Pro</li>
+              <li>4 PT Sessions / Month</li>
+              <li>Custom Meal Plan</li>
+              <li>Priority Booking</li>
+              <li>Guest Passes (2/month)</li>
+            </ul>
+            <a href="members.html" class="btn-outline-fit">Go Elite</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       SITE PAGES NAVIGATION SECTION
+  ══════════════════════════════════════════════ -->
+  <section class="pages-section">
+    <div class="container">
+      <div class="text-center mb-4">
+        <h2>Explore All <span style="color:#e94560;">Pages</span></h2>
+        <p style="color:#a0a0b0;">Each page covers a Semester 2 experiment</p>
+      </div>
+      <div class="row g-3">
+        <div class="col-6 col-md-4 col-lg-3">
+          <a href="components.html" class="page-link-card">
+            <div class="pg-icon">🧩</div>
+            <h6>Bootstrap Components</h6>
+            <p>Modal, carousel, accordion</p>
+          </a>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+          <a href="tailwind.html" class="page-link-card">
+            <div class="pg-icon">🌬️</div>
+            <h6>Tailwind CSS</h6>
+            <p>Mobile-first utilities</p>
+          </a>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+          <a href="calculator.html" class="page-link-card">
+            <div class="pg-icon">🧮</div>
+            <h6>JS Calculator</h6>
+            <p>Variables, conditions, loops</p>
+          </a>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+          <a href="members.html" class="page-link-card">
+            <div class="pg-icon">👥</div>
+            <h6>Members Manager</h6>
+            <p>Arrays, DOM, events</p>
+          </a>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+          <a href="oop.html" class="page-link-card">
+            <div class="pg-icon">🏗️</div>
+            <h6>OOP Demo</h6>
+            <p>ES6 classes &amp; inheritance</p>
+          </a>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+          <a href="react.html" class="page-link-card">
+            <div class="pg-icon">⚛️</div>
+            <h6>React Docs</h6>
+            <p>JSX, useState, useEffect</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 <span>FitLife Fitness Studio</span> &nbsp;|&nbsp; Semester 2 Web Designing Project &nbsp;|&nbsp; Deeptanshu Yadav</p>
+  </footer>
+
+  <!-- Bootstrap 5 JS bundle (includes Popper) via CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
