@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FitLife — Members Manager</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Table */
+    #members-table { width:100%; border-collapse:collapse; font-size:0.88rem; }
+    #members-table th { background:var(--dark); color:var(--primary); padding:10px 12px; text-align:left; border-bottom:2px solid var(--border); }
+    #members-table td { padding:9px 12px; border-bottom:1px solid var(--border); color:var(--muted); }
+    #members-table tr:hover td { background:var(--dark); }
+    .remove-btn { background:var(--danger); color:#fff; border:none; padding:4px 12px; border-radius:4px; cursor:pointer; font-size:0.78rem; }
+    .badge { display:inline-block; padding:2px 10px; border-radius:12px; font-size:0.75rem; font-weight:600; }
+    .badge-basic   { background:#0f3460; color:#74b9ff; }
+    .badge-pro     { background:#1a1a2e; color:#a29bfe; border:1px solid #6c5ce7; }
+    .badge-elite   { background:#2d1b00; color:#fdcb6e; border:1px solid #f39c12; }
+    /* Stats row */
+    .stat-row { display:flex; gap:12px; flex-wrap:wrap; margin-bottom:16px; }
+    .stat-chip { background:var(--card-bg); border:1px solid var(--border); border-radius:8px; padding:10px 18px; font-size:0.82rem; }
+    .stat-chip strong { display:block; font-size:1.3rem; color:var(--primary); }
+    /* Theme toggle */
+    .theme-toggle { background:var(--card-bg); border:1px solid var(--border); color:var(--text); padding:7px 16px; border-radius:20px; cursor:pointer; font-size:0.85rem; }
+  </style>
+</head>
+<body>
+
+  <nav class="site-nav">
+    <a href="index.html" class="brand">💪 FitLife</a>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="components.html">Components</a></li>
+      <li><a href="tailwind.html">Tailwind</a></li>
+      <li><a href="calculator.html">Calculator</a></li>
+      <li><a href="members.html" class="active">Members</a></li>
+      <li><a href="oop.html">OOP</a></li>
+      <li><a href="react.html">React Docs</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-wrapper">
+
+    <!-- Header row with theme toggle -->
+    <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:12px; margin-bottom:8px;">
+      <div>
+        <h2 class="section-title">Members Manager</h2>
+        <p class="section-sub">
+          Experiment: Array &amp; Object Operations + DOM Manipulation &amp; Event Handling<br />
+          Add, remove, search, sort members. Toggle light/dark theme.
+        </p>
+      </div>
+      <!-- Event listener: theme toggle button -->
+      <button class="theme-toggle" id="theme-btn" onclick="toggleTheme()">🌙 Dark Mode</button>
+    </div>
+
+    <!-- Stats chips (updated by JS) -->
+    <div class="stat-row" id="stats-row">
+      <div class="stat-chip"><strong id="stat-total">0</strong>Total Members</div>
+      <div class="stat-chip"><strong id="stat-basic">0</strong>Basic</div>
+      <div class="stat-chip"><strong id="stat-pro">0</strong>Pro</div>
+      <div class="stat-chip"><strong id="stat-elite">0</strong>Elite</div>
+      <div class="stat-chip"><strong id="stat-avg-age">—</strong>Avg Age</div>
+    </div>
+
+    <div style="display:grid; grid-template-columns:300px 1fr; gap:20px; align-items:start;">
+
+      <!-- ── ADD MEMBER FORM ── -->
+      <div class="card">
+        <h3>Add New Member</h3>
+
+        <div class="form-group">
+          <label for="m-name">Name</label>
+          <input type="text" id="m-name" placeholder="e.g. Rahul Sharma" />
+        </div>
+        <div class="form-group">
+          <label for="m-age">Age</label>
+          <input type="number" id="m-age" placeholder="e.g. 25" min="10" max="80" />
+        </div>
+        <div class="form-group">
+          <label for="m-plan">Plan</label>
+          <select id="m-plan">
+            <option value="Basic">Basic</option>
+            <option value="Pro">Pro</option>
+            <option value="Elite">Elite</option>
+          </select>
+        </div>
+        <!-- Click event: add member -->
+        <button class="btn btn-success" onclick="addMember()" style="width:100%;">+ Add Member</button>
+
+        <!-- Search / Filter -->
+        <hr style="border-color:var(--border); margin:18px 0;" />
+        <h3>Search &amp; Filter</h3>
+        <div class="form-group">
+          <label for="search-name">Search by Name</label>
+          <!-- input event listener registered in JS -->
+          <input type="text" id="search-name" placeholder="Type to search…" />
+        </div>
+        <div class="form-group">
+          <label for="filter-plan">Filter by Plan</label>
+          <select id="filter-plan" onchange="renderTable()">
+            <option value="All">All Plans</option>
+            <option value="Basic">Basic</option>
+            <option value="Pro">Pro</option>
+            <option value="Elite">Elite</option>
+          </select>
+        </div>
+
+        <!-- Sort buttons -->
+        <hr style="border-color:var(--border); margin:18px 0;" />
+        <h3>Sort</h3>
+        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+          <button class="btn btn-outline" onclick="sortBy('name')" style="flex:1; font-size:0.8rem;">A→Z Name</button>
+          <button class="btn btn-outline" onclick="sortBy('age')"  style="flex:1; font-size:0.8rem;">Age ↑</button>
+        </div>
+
+        <!-- Danger actions -->
+        <hr style="border-color:var(--border); margin:18px 0;" />
+        <button class="btn btn-danger" onclick="clearAll()" style="width:100%; font-size:0.85rem;">🗑 Clear All Members</button>
+      </div>
+
+      <!-- ── MEMBERS TABLE ── -->
+      <div class="card" style="overflow-x:auto;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+          <h3 style="margin:0;">Member List</h3>
+          <span id="count-label" style="font-size:0.82rem; color:var(--muted);"></span>
+        </div>
+        <table id="members-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Age</th>
+              <th>Plan</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="members-body">
+            <!-- rows injected by JS -->
+          </tbody>
+        </table>
+        <p id="empty-msg" style="text-align:center; color:var(--muted); padding:24px; display:none;">
+          No members found. Add one using the form.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- ── CONCEPTS USED ── -->
+    <div class="card" style="margin-top:24px;">
+      <h3>JavaScript Concepts Used in members.js</h3>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:16px; font-size:0.85rem; color:var(--muted);">
+        <div><p style="color:var(--primary); font-weight:600; margin-bottom:4px;">Array of Objects</p>
+          <p>Members stored as <code>{ name, age, plan, id }</code> objects in an array.</p></div>
+        <div><p style="color:var(--primary); font-weight:600; margin-bottom:4px;">push()</p>
+          <p>New member object pushed onto the array when form is submitted.</p></div>
+        <div><p style="color:var(--primary); font-weight:600; margin-bottom:4px;">filter()</p>
+          <p>Filters array by plan or search name without mutating original.</p></div>
+        <div><p style="color:var(--primary); font-weight:600; margin-bottom:4px;">sort()</p>
+          <p>Sorts members by age (numeric) or name (alphabetical).</p></div>
+        <div><p style="color:var(--primary); font-weight:600; margin-bottom:4px;">map() / forEach()</p>
+          <p><code>forEach</code> renders each member row; <code>map</code> builds stats.</p></div>
+        <div><p style="color:var(--primary); font-weight:600; margin-bottom:4px;">DOM + Events</p>
+          <p>innerHTML updates, addEventListener for search, onclick for buttons, theme toggle.</p></div>
+      </div>
+    </div>
+
+  </div><!-- /page-wrapper -->
+
+  <footer style="background:#0a0a14; color:var(--muted); text-align:center; padding:20px; font-size:0.85rem;">
+    &copy; 2026 <span style="color:var(--primary);">FitLife Fitness Studio</span> &nbsp;|&nbsp; Deeptanshu Yadav
+  </footer>
+
+  <script src="js/members.js"></script>
+</body>
+</html>
