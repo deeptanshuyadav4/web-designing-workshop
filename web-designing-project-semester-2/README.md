@@ -46,3 +46,18 @@ Open any `.html` file directly in your browser — no server needed.
 ## Author
 
 **Deeptanshu Yadav** | Subject Code: 25VA151 | Semester 2
+
+## Page Navigation
+
+All pages share a sticky navbar linking to every other page in the project,
+so the site works as one connected multi-page website.
+
+| Page | Bootstrap? | Tailwind? | JavaScript? |
+|------|-----------|-----------|-------------|
+| index.html | ✅ Grid + Components | — | — |
+| components.html | ✅ Modal, Carousel, Accordion | — | — |
+| tailwind.html | — | ✅ Utility classes | — |
+| calculator.html | — | — | ✅ Variables, if-else, loops |
+| members.html | — | — | ✅ Arrays, objects, DOM, events |
+| oop.html | — | — | ✅ ES6 classes, inheritance |
+| react.html | — | — | ✅ JSX, useState, useEffect (docs) |
