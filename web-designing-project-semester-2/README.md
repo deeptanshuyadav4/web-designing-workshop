@@ -1,41 +1,34 @@
-# FitLife Fitness Studio — Semester 2 Web Designing Project
+# FitLife Fitness Studio
 
-A multi-page static website demonstrating all Semester 2 web designing experiments.
-Built with Bootstrap 5, Tailwind CSS, and vanilla JavaScript. No build step required —
-runs directly on GitHub Pages.
+A multi-page fitness studio website. Built with HTML, CSS (Bootstrap 5 +
+custom styles) and vanilla JavaScript — no build step required, runs
+directly on GitHub Pages.
 
 ## Live URL
 
 **https://deeptanshuyadav4.github.io/web-designing-workshop/web-designing-project-semester-2/index.html**
 
-## Experiment Coverage
+## Pages
 
-| File | Experiment / Topic |
-|------|--------------------|
-| `index.html` | Responsive Web Page using Bootstrap Grid System (container, row, col) |
-| `components.html` | Bootstrap UI Components (navbar, cards, modal, carousel, accordion) |
-| `tailwind.html` | Mobile-First Responsive Design using Tailwind CSS |
-| `calculator.html` + `js/calculator.js` | JavaScript Variables, Conditions (if-else), Loops |
-| `members.html` + `js/members.js` | Array & Object Operations + DOM Manipulation & Event Handling |
-| `oop.html` + `js/oop.js` | Object-Oriented Programming (ES6 classes, inheritance, encapsulation) |
-| `react.html` | React experiments — JSX & Props, useState, useEffect / Forms (code-docs) |
+| File | Description |
+|------|--------------|
+| `index.html` | Home page — hero, stats, features, membership plans |
+| `components.html` | Class cards, image carousel, join/trial modals, FAQ accordion, badges & alerts |
+| `calculator.html` + `js/calculator.js` | BMI & daily calorie calculator with a weekly workout schedule |
+| `members.html` + `js/members.js` | Membership manager — add/remove/search/sort members, light/dark theme toggle |
 
 ## Project Structure
 
 ```
 web-designing-project-semester-2/
-├── index.html          Bootstrap grid home page
-├── components.html     Bootstrap UI components showcase
-├── tailwind.html       Tailwind CSS mobile-first page
+├── index.html          Home page
+├── components.html     Class cards, carousel, modals, FAQ accordion
 ├── calculator.html     BMI & workout calculator
-├── members.html        Membership manager (arrays, DOM, events)
-├── oop.html            OOP demo with ES6 classes
-├── react.html          React experiments documentation
+├── members.html        Membership manager
 ├── style.css           Shared custom styles
 ├── js/
 │   ├── calculator.js
-│   ├── members.js
-│   └── oop.js
+│   └── members.js
 └── README.md
 ```
 
@@ -43,21 +36,10 @@ web-designing-project-semester-2/
 
 Open any `.html` file directly in your browser — no server needed.
 
+## Tech
+
+HTML5, CSS3 (Bootstrap 5 via CDN + custom styles) and vanilla JavaScript only.
+
 ## Author
 
-**Deeptanshu Yadav** | Subject Code: 25VA151 | Semester 2
-
-## Page Navigation
-
-All pages share a sticky navbar linking to every other page in the project,
-so the site works as one connected multi-page website.
-
-| Page | Bootstrap? | Tailwind? | JavaScript? |
-|------|-----------|-----------|-------------|
-| index.html | ✅ Grid + Components | — | — |
-| components.html | ✅ Modal, Carousel, Accordion | — | — |
-| tailwind.html | — | ✅ Utility classes | — |
-| calculator.html | — | — | ✅ Variables, if-else, loops |
-| members.html | — | — | ✅ Arrays, objects, DOM, events |
-| oop.html | — | — | ✅ ES6 classes, inheritance |
-| react.html | — | — | ✅ JSX, useState, useEffect (docs) |
+**Deeptanshu Yadav**

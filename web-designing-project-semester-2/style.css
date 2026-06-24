@@ -1,7 +1,6 @@
 /* ============================================================
    style.css — Shared custom styles for FitLife Fitness Studio
-   Used by: calculator.html, members.html, oop.html, react.html
-   Bootstrap/Tailwind pages include their own CDN styles.
+   Used by: calculator.html, members.html
    ============================================================ */
 
 /* ── CSS custom properties (variables) ── */
@@ -176,25 +175,7 @@ body {
 .tag-overweight  { background: var(--danger);  color: #fff; }
 .tag-obese       { background: #8e44ad;         color: #fff; }
 
-/* ── Code blocks (react.html) ── */
-pre {
-  background: #0d1117;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 18px 20px;
-  overflow-x: auto;
-  font-size: 0.85rem;
-  line-height: 1.6;
-  margin: 10px 0 20px;
-  color: #c9d1d9;
-}
 code { font-family: 'Consolas', 'Fira Code', monospace; }
-.kw  { color: #ff7b72; }   /* keyword  */
-.fn  { color: #d2a8ff; }   /* function */
-.str { color: #a5d6ff; }   /* string   */
-.cm  { color: #8b949e; }   /* comment  */
-.num { color: #79c0ff; }   /* number   */
-.tag-c { color: #7ee787; } /* JSX tag  */
 
 /* ── Responsive helpers ── */
 @media (max-width: 600px) {
